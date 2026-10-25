@@ -125,7 +125,7 @@ export default function CreatePostForm() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.95 }}
                 disabled={loading}
-                className="flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2 font-medium text-white transition-colors hover:bg-brand-600 disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 font-medium text-white transition-colors hover:bg-brand-600 disabled:opacity-50 sm:w-auto"
               >
                 {loading ? (
                   <Loader2 size={18} className="animate-spin" />

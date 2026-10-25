@@ -5,27 +5,16 @@ import { prisma } from "@/lib/prisma";
 import SignOutButton from "@/components/SignOutButton";
 import CreatePostForm from "@/components/CreatePostForm";
 import PostCard from "@/components/PostCard";
-import { Camera, User, Settings } from "lucide-react";
+import { Camera, Settings } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import Avatar from "@/components/Avatar";
+import LandingPage from "@/components/LandingPage";
 
 export default async function Home() {
   const session = await auth.api.getSession({ headers: await headers() });
 
   if (!session) {
-    return (
-      <main className="space-y-4 p-8">
-        <h1 className="text-3xl font-bold">Welcome</h1>
-        <div className="flex gap-4">
-          <Link href="/login" className="underline">
-            Log in
-          </Link>
-          <Link href="/signup" className="underline">
-            Sign up
-          </Link>
-        </div>
-      </main>
-    );
+    return <LandingPage year={new Date().getFullYear()} />;
   }
 
   const posts = await prisma.post.findMany({
@@ -53,28 +42,32 @@ export default async function Home() {
   });
 
   return (
-    <main className="mx-auto max-w-xl space-y-6 p-6">
-      <header className="flex items-center justify-between">
-        <h1 className="flex items-center gap-2 text-2xl font-bold">
+    <main className="mx-auto max-w-xl space-y-4 px-4 pb-10 sm:space-y-6 sm:px-6">
+      <header className="sticky top-0 z-20 -mx-4 flex items-center justify-between gap-2 bg-gray-50/90 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
+        <h1 className="flex items-center gap-2 text-xl font-bold sm:text-2xl">
           <Camera className="text-brand-500" />
           Snapgram
         </h1>
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center gap-1 sm:gap-3">
           <Link
             href={`/profile/${session.user.id}`}
-            className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-brand-600"
+            aria-label="Your profile"
+            className="flex items-center gap-2 rounded-full p-1 text-sm font-medium text-gray-700 hover:text-brand-600"
           >
             <Avatar
               name={session.user.name}
               image={session.user.image}
-              size={28}
+              size={32}
             />
-            {session.user.name}
+            <span className="hidden max-w-[10rem] truncate sm:inline">
+              {session.user.name}
+            </span>
           </Link>
           <Link
             href="/settings"
             aria-label="Settings"
-            className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100"
+            className="rounded-full p-2.5 text-gray-500 transition-colors hover:bg-gray-100"
           >
             <Settings size={18} />
           </Link>
@@ -84,7 +77,7 @@ export default async function Home() {
 
       <CreatePostForm />
 
-      <section className="space-y-6">
+      <section className="space-y-4 sm:space-y-6">
         {posts.length === 0 ? (
           <p className="text-center text-gray-500">
             No posts yet. Be the first!

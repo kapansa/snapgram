@@ -4,9 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Loader2, MessageCircle, Send, Trash2 } from "lucide-react";
+import Avatar from "@/components/Avatar";
 import LikeButton from "@/components/LikeButton";
 import { createComment, deleteComment } from "@/actions/comments";
-import Avatar from "@/components/Avatar";
 
 export default function PostFooter({
   postId,
@@ -75,7 +75,7 @@ export default function PostFooter({
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label="Toggle comments"
-          className="flex items-center gap-1.5 rounded-full px-2 py-1 text-sm text-gray-600 transition-colors hover:bg-gray-100"
+          className="flex items-center gap-1.5 rounded-full px-2.5 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-100"
         >
           <MessageCircle size={22} className="text-gray-500" />
           {count > 0 && <span>{count}</span>}
@@ -137,7 +137,7 @@ export default function PostFooter({
                             onClick={() => handleDelete(c.id)}
                             disabled={deletingId === c.id}
                             aria-label="Delete comment"
-                            className="rounded-full p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-red-600 disabled:opacity-50"
+                            className="rounded-full p-2.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-red-600 disabled:opacity-50"
                           >
                             {deletingId === c.id ? (
                               <Loader2 size={14} className="animate-spin" />
@@ -163,7 +163,7 @@ export default function PostFooter({
                 <button
                   disabled={sending || !text.trim()}
                   aria-label="Send comment"
-                  className="rounded-full bg-brand-500 p-2 text-white transition-colors hover:bg-brand-600 disabled:opacity-50"
+                  className="rounded-full bg-brand-500 p-2.5 text-white transition-colors hover:bg-brand-600 disabled:opacity-50"
                 >
                   {sending ? (
                     <Loader2 size={18} className="animate-spin" />

@@ -15,15 +15,15 @@ export default function PostCard({ post, currentUserId }) {
   }));
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+    <article className="-mx-4 overflow-hidden border-y border-gray-200 bg-white shadow-sm sm:mx-0 sm:rounded-2xl sm:border">
       <PostTop
         postId={post.id}
         authorId={post.author.id}
         authorName={post.author.name}
+        authorImage={post.author.image}
         date={formatDate(post.createdAt)}
         caption={post.caption}
         canEdit={post.authorId === currentUserId}
-        authorImage={post.author.image}
       />
 
       <Image

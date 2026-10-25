@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { LogOut } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { motion } from "framer-motion";
 
 export default function SignOutButton() {
   const router = useRouter();
@@ -18,10 +18,11 @@ export default function SignOutButton() {
     <motion.button
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className="flex items-center gap-1.5 rounded-full border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-100"
+      aria-label="Sign out"
+      className="flex items-center gap-1.5 rounded-full border border-gray-300 p-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100 sm:px-3 sm:py-1.5"
     >
       <LogOut size={16} />
-      Sign out
+      <span className="hidden sm:inline">Sign out</span>
     </motion.button>
   );
 }

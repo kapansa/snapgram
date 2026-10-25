@@ -98,10 +98,10 @@ export default function PostTop({
     <>
       <div className="flex items-center gap-3 p-3">
         <Avatar name={authorName} image={authorImage} size={36} />
-        <div className="leading-tight">
+        <div className="min-w-0 leading-tight">
           <Link
             href={`/profile/${authorId}`}
-            className="font-semibold hover:underline"
+            className="block truncate font-semibold hover:underline"
           >
             {authorName}
           </Link>
@@ -109,7 +109,7 @@ export default function PostTop({
         </div>
 
         {canEdit && (
-          <div ref={menuRef} className="relative ml-auto">
+          <div ref={menuRef} className="relative ml-auto shrink-0">
             <button
               onClick={() => setMenuOpen((open) => !open)}
               aria-label="Post options"
@@ -151,7 +151,7 @@ export default function PostTop({
 
       {confirmingDelete && (
         <div className="mx-3 mb-3 space-y-2 rounded-xl bg-red-50 p-3 text-sm">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <span className="text-red-700">
               Delete this post? This cannot be undone.
             </span>

@@ -37,7 +37,7 @@ export default function LikeButton({ postId, initialLiked, initialCount }) {
       whileTap={{ scale: 0.9 }}
       aria-pressed={liked}
       aria-label={liked ? "Unlike" : "Like"}
-      className="flex items-center gap-1.5 rounded-full px-2 py-1 text-sm text-gray-600 transition-colors hover:bg-gray-100"
+      className="flex items-center gap-1.5 rounded-full px-2.5 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-100"
     >
       <motion.span
         key={liked ? "liked" : "unliked"}

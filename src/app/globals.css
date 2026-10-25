@@ -8,3 +8,12 @@
 body {
   @apply bg-gray-50 text-gray-900 antialiased;
 }
+
+/* iOS Safari zooms into inputs smaller than 16px; this keeps text at 16px on phones */
+@media (max-width: 639px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
