@@ -92,7 +92,7 @@ Then fill in the values (see the table below). Never commit `.env`.
 
 ### 4. Set up file storage (Cloudflare R2)
 
-1. In the Cloudflare dashboard, open **R2 Object Storage** and create a bucket (for example `snapgram-images`).
+1. In the Cloudflare dashboard, open **R2 Object Storage** and create a bucket (choose any name you like).
 2. In the bucket's **Settings**, enable the **Public Development URL** and copy it into `R2_PUBLIC_URL`.
 3. Create an **API token** with **Object Read & Write** permission, scoped to that bucket. Copy the Access Key ID, Secret Access Key, and S3 endpoint into the matching variables. The endpoint must not include the bucket name.
 
